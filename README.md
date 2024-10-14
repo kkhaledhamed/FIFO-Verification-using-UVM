@@ -57,7 +57,7 @@ The verification plan covers:
 - Randomizes signals and defines constraints to ensure targeted coverage.
 
 #### FIFO_env:
--Contains the key components for verification:
+Contains the key components for verification:
 - FIFO_agent: Manages driver and monitor interaction with the DUT.
 - FIFO_scoreboard: Compares actual DUT outputs with expected results from the reference model.
 - FIFO_coverage: Collects functional coverage data.
