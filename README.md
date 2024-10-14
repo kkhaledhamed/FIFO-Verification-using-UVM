@@ -125,14 +125,10 @@ Assertions play a crucial role in ensuring that the design behaves as expected. 
 ### Coverage
 The verification methodology employed functional coverage to ensure that all corner cases and important scenarios were tested. The coverage model includes:
 
-- Code Coverage: Including toggle, branch, statement, and condition coverage.
-- Assertion Coverage: Ensuring that all RTL assertions were exercised.
-- Functional Coverage: Using a covergroup to measure the effectiveness of the testbench in exercising different FIFO states (e.g., full, almost full, empty).
-
-#### Overall Coverage
-- Toggle Coverage: Measures how often each bit in the design toggles.
-- Branch Coverage: Ensures all branches in conditional statements are exercised.
-- Statement Coverage: Verifies all code statements are executed.
+- Code Coverage: Including toggle, branch, and statement coverage.
+ - Toggle Coverage: Measures how often each bit in the design toggles.
+ - Branch Coverage: Ensures all branches in conditional statements are exercised.
+ - Statement Coverage: Verifies all code statements are executed.
 - Assertions Coverage: Tracks how many of the implemented assertions have been triggered.
 - Functional Coverage: Cross-coverage between write enable, read enable, and control signals (excluding data_out).
 
