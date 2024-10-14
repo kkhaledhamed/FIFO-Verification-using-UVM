@@ -1,4 +1,4 @@
-# Synchronous-FIFO-Verification-using-UVM
+# Synchronous FIFO Verification using UVM
 This project implements the Universal Verification Methodology (UVM) for the functional verification of a First-In-First-Out (FIFO) design. The testbench is written in SystemVerilog and uses UVM components such as sequences, drivers, monitors, and scoreboards to ensure the correctness of the FIFO design. The verification environment also includes functional coverage and assertions for comprehensive testing.
 
 ![FIFO_OneWayStreet_1](https://github.com/user-attachments/assets/c43f4088-9a65-4308-ae19-206e4c443c8d)
