@@ -75,7 +75,7 @@ FIFO_coverage:
 #### Coverage Metrics:
 - Functional Coverage: Includes key aspects such as write-read combinations, empty and full conditions, and handling of flags.
 - Assertions: SVA properties are used to check the behavior of signals like full, empty, almostfull, almostempty, and flags during various scenarios.
-- 
+
 #### FIFO_test:
 - Builds the UVM environment and sequences.
 - Retrieves the virtual interface and configuration settings.
