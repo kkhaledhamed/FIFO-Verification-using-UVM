@@ -131,11 +131,11 @@ The verification methodology employed functional coverage to ensure that all cor
 
 #### Overall Coverage
 -Toggle Coverage: Measures how often each bit in the design toggles.
--Branch Coverage: Ensures all branches in conditional statements are exercised.
-=Statement Coverage: Verifies all code statements are executed.
--Condition Coverage: Ensures that all conditions in the design have been evaluated.
--Assertions Coverage: Tracks how many of the implemented assertions have been triggered.
--Functional Coverage: Cross-coverage between write enable, read enable, and control signals (excluding data_out).
+- Branch Coverage: Ensures all branches in conditional statements are exercised.
+- Statement Coverage: Verifies all code statements are executed.
+- Condition Coverage: Ensures that all conditions in the design have been evaluated.
+- Assertions Coverage: Tracks how many of the implemented assertions have been triggered.
+- Functional Coverage: Cross-coverage between write enable, read enable, and control signals (excluding data_out).
 
 ### Simulation Results
 The FIFO verification was conducted using QuestaSim. Several key test cases and scenarios were simulated, At the end of the simulation, the FIFO is empty, indicating that all transactions were processed correctly.
