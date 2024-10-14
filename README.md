@@ -130,7 +130,7 @@ The verification methodology employed functional coverage to ensure that all cor
 - Functional Coverage: Using a covergroup to measure the effectiveness of the testbench in exercising different FIFO states (e.g., full, almost full, empty).
 
 #### Overall Coverage
--Toggle Coverage: Measures how often each bit in the design toggles.
+- Toggle Coverage: Measures how often each bit in the design toggles.
 - Branch Coverage: Ensures all branches in conditional statements are exercised.
 - Statement Coverage: Verifies all code statements are executed.
 - Condition Coverage: Ensures that all conditions in the design have been evaluated.
