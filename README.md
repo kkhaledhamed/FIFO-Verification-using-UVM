@@ -20,17 +20,15 @@ This project focuses on verifying a FIFO design with the following key attribute
 - Write and Read Control: Logic to handle data flow based on control signals wr_enable, rd_enable, and rst_n.
 
 ### Detected Design Bugs
-
-- The FIFO design contains four known bugs that were targeted during verification:
+ The FIFO design contains four known bugs that were targeted during verification:
 - Reset Signals Overflow: Issues with wr_ack and underflow signals.
-  
-#### Unhandled Cases:
-- If both read and write are enabled when FIFO is empty, only writing should take place.
-- If both read and write are enabled when FIFO is full, only reading should take place.
-- Underflow Bug: The underflow signal behaves sequentially instead of combinationally.
-- Almost Full Flag: Incorrect depth calculation (FIFO_DEPTH-2 corrected to FIFO_DEPTH-1).
-- Write/Overflow Conflict: Overflow should not be high after a successful write operation.
-- Read/Underflow Conflict: Underflow should not be high after a successful read operation
+- Unhandled Cases:
+  - If both read and write are enabled when FIFO is empty, only writing should take place.
+  - If both read and write are enabled when FIFO is full, only reading should take place.
+  - Underflow Bug: The underflow signal behaves sequentially instead of combinationally.
+  - Almost Full Flag: Incorrect depth calculation (FIFO_DEPTH-2 corrected to FIFO_DEPTH-1).
+  - Write/Overflow Conflict: Overflow should not be high after a successful write operation.
+  - Read/Underflow Conflict: Underflow should not be high after a successful read operation
 
 ### Verification Plan
 Testbench Structure:
