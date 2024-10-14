@@ -36,6 +36,8 @@ Testbench Structure:
 - Clock generation and virtual interface setup using UVM configuration database.
 - Sequences cover the following scenarios: Reset, Write only, Read only, Write & Read, and Write & Read with empty sequences.
 - Scoreboard and coverage collector to validate the FIFO's functional correctness and ensure coverage metrics are met.
+Testbench Structure illustrated:
+![Structure](https://github.com/user-attachments/assets/13970837-3607-420e-9518-416929ac3d6f)
 
 The verification plan covers:
 - Reset Sequences: Ensures that all signals and flags are properly reset.
@@ -44,7 +46,36 @@ The verification plan covers:
 - Combined Write-Read Sequences: Verifies proper handling of concurrent write and read operations, including corner cases such as FIFO full or empty conditions.
 
 ### Key UVM Components:
+FIFO_test:
+- Builds the UVM environment and sequences.
+- Retrieves the virtual interface and configuration settings.
+- Starts the sequences and monitors the test execution.
 
+FIFO_sequence_item:
+- Defines the data fields for communication with the DUT (Input and Output signals).
+- Randomizes signals and defines constraints to ensure targeted coverage.
+
+FIFO_env:
+Contains the key components for verification:
+- FIFO_agent: Manages driver and monitor interaction with the DUT.
+- FIFO_scoreboard: Compares actual DUT outputs with expected results from the reference model.
+- FIFO_coverage: Collects functional coverage data.
+- FIFO_driver:
+Pulls transactions from the sequencer and drives the interface signals in the run_phase.
+
+FIFO_monitor:
+- Observes DUT signals, translates them into transactions, and sends them to analysis components such as the scoreboard and coverage.
+
+FIFO_scoreboard:
+- Verifies DUT output by comparing it against a reference model, incrementing the error counter and displaying messages if discrepancies are found.
+  
+FIFO_coverage:
+- Collects functional coverage using covergroups to ensure that the verification plan has been thoroughly executed.
+
+#### Coverage Metrics:
+- Functional Coverage: Includes key aspects such as write-read combinations, empty and full conditions, and handling of flags.
+- Assertions: SVA properties are used to check the behavior of signals like full, empty, almostfull, almostempty, and flags during various scenarios.
+- 
 #### FIFO_test:
 - Builds the UVM environment and sequences.
 - Retrieves the virtual interface and configuration settings.
@@ -77,16 +108,19 @@ Collects functional coverage using covergroups to ensure that the verification p
 - Assertions: SVA properties are used to check the behavior of signals like full, empty, almostfull, almostempty, and flags during various scenarios.
 
 ### RTL Assertions
-Several RTL assertions were implemented to ensure that the FIFO flags and pointers behave correctly under different scenarios, such as reset, overflow, underflow, read, and write operations.
-
-### Interface Code
-The project uses a SystemVerilog interface for connecting the testbench components with the DUT (Device Under Test). This interface simplifies signal handling and helps to verify the communication between different testbench components.
-
-### Monitor
-A dedicated monitor module tracks the transactions between the DUT and the testbench, ensuring the inputs and outputs behave as expected. The monitor also logs transaction information for further analysis.
-
-### Testbench
-The testbench is self-checking, using random and directed stimuli to test the FIFO under a wide range of conditions. A scoreboard compares the expected results with the actual outputs from the DUT. The testbench is designed to handle:
+Assertions play a crucial role in ensuring that the design behaves as expected. Some key assertions include:
+- Reset Handling: Ensures all internal signals and flags are low after reset is asserted.
+- Full Condition: When the FIFO reaches its maximum depth, the full flag should be high.
+- Empty Condition: When the FIFO has no elements, the empty flag should be high.
+- Almost Full Condition: When the FIFO has only one empty slot, the almostfull flag should be high.
+- Almost Empty Condition: When the FIFO has only one slot, the almostempty flag should be high.
+- Write Enable: When write is enabled, wr_ack should acknowledge, and the write pointer (wr_ptr) should increment.
+- Read Enable: When read is enabled, the read pointer (rd_ptr) should increment.
+- Overflow and Underflow: Ensures that overflow and underflow are flagged correctly based on the FIFO state.
+- Count Assertions
+  - Assertions table:
+  - ![image](https://github.com/user-attachments/assets/5da96778-2d5c-41f9-af41-21886b32bd44)
+  - ![image](https://github.com/user-attachments/assets/0d23c379-2871-4dd2-b0ca-f2d85c2d2f2d)
 
 ### Coverage
 The verification methodology employed functional coverage to ensure that all corner cases and important scenarios were tested. The coverage model includes:
